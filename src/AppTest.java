@@ -13,14 +13,17 @@ public class AppTest {
         ContactList contactList = new ContactList();
         Contact newContact = new Contact("test2", "0987654321");
 
-        contactList.viewContacts();
-        System.out.println("Adding new contact");
-        contactList.addContact("Test", "1234567890");
-        contactList.viewContacts();
+//        contactList.viewContacts();
+//        System.out.println("Adding new contact");
+//        contactList.addContact("Test", "1234567890");
+//        contactList.viewContacts();
+//
+//        System.out.println("Adding new contact");
+//        contactList.addContact(newContact);
+//        contactList.viewContacts();
 
-        System.out.println("Adding new contact");
-        contactList.addContact(newContact);
-        contactList.viewContacts();
+        System.out.println("Searching contacts");
+        contactList.searchContacts("Test");
 
 
 
