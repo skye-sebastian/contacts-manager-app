@@ -1,5 +1,7 @@
 public class AppTest {
 
+    private static Object ContactList;
+
     public static void main(String[] args) {
 
         ContactList contactList = new ContactList();
@@ -17,7 +19,9 @@ public class AppTest {
 //        System.out.println("Searching contacts");
 //        ContactList.searchContacts("Test");
 
-        contactList.deleteContact("Test");
+//        contactList.deleteContact("Test");
+
+        System.out.println(contactList);
 
     }
 

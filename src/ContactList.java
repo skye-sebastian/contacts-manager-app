@@ -8,7 +8,25 @@ import java.util.*;
 public class ContactList {
 
     public ContactList() {
+        Path contactsFilePath = Paths.get("src/contacts.txt");
+        try {
+            List<String> contactLines = Files.readAllLines(contactsFilePath);
+            List<Contact> contactList = new ArrayList<Contact>(0);
+
+            for (String line : contactLines) {
+                Contact contact = new Contact();
+                String[] tokens = line.split("\\|");
+
+                contact.setName(tokens[0]);
+                contact.setPhoneNumber(tokens[1]);
+
+                contactList.add(contact);
+            }
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
+
 
 
     public static String viewContacts(){
@@ -71,24 +89,24 @@ public class ContactList {
         return false;
     }
 
-    public static void deleteContact(String name) {
-        Path contactsFilePath = Paths.get("src/contacts.txt");
-//        if (searchContacts(name)) {
-        try {
-            List<String> contactsList = Files.readAllLines(contactsFilePath);
-            for (String contact : contactsList) {
-                if (contact.contains(name)) {
-                    System.out.println("Deleting " + name + "\n");
-                    contactsList.remove(contact);
-                    break;
-                } else {
-                    System.out.println("No matches found");
-                }
-            }
-        } catch (IOException | ConcurrentModificationException exc){
-            exc.printStackTrace();
-        }
-
-    }
+//    public static void deleteContact(String name) {
+//        Path contactsFilePath = Paths.get("src/contacts.txt");
+////        if (searchContacts(name)) {
+//        try {
+//            List<String> contactsList = Files.readAllLines(contactsFilePath);
+//            for (String contact : contactsList) {
+//                if (contact.contains(name)) {
+//                    System.out.println("Deleting " + name + "\n");
+//                    contactsList.remove(contact);
+//                    break;
+//                } else {
+//                    System.out.println("No matches found");
+//                }
+//            }
+//        } catch (IOException | ConcurrentModificationException exc){
+//            exc.printStackTrace();
+//        }
+//
+//    }
 
 }
