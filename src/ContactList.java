@@ -60,7 +60,7 @@ public class ContactList {
         Path contactsFilePath = Paths.get("src/contacts.txt");
         try {
             List<String> contactsList = Files.readAllLines(contactsFilePath);
-            for (int i = 0; i < contactsList.size(); i += 1) {
+            for (int i = 0; i < contactsList.size(); i ++) {
                 if (contactsList.contains(name)) {
                     System.out.println(contactsList.get(i));
                     return contactsList.get(i);
@@ -73,6 +73,8 @@ public class ContactList {
     }
 
 
-
-
+//    public static List<String> deleteContact(String name, String number) {
+//        Path contactsFilePath = Paths.get("src/contacts.txt");
+//
+//    }
 }
