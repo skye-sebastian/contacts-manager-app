@@ -13,6 +13,8 @@ public class ContactList {
             List<String> contactLines = Files.readAllLines(contactsFilePath);
             List<Contact> contactList = new ArrayList<Contact>(0);
 
+//            Source: https://stackoverflow.com/questions/30564462/read-data-from-a-text-file-and-create-an-object
+
             for (String line : contactLines) {
                 Contact contact = new Contact();
                 String[] tokens = line.split("\\|");
@@ -70,23 +72,18 @@ public class ContactList {
     }
 
 
-    public static boolean searchContacts(String name) {
+    public static void searchContacts(String name) {
         Path contactsFilePath = Paths.get("src/contacts.txt");
         try {
             List<String> contactsList = Files.readAllLines(contactsFilePath);
             for (String contact : contactsList) {
                 if (contact.contains(name)) {
                     System.out.println(contact);
-                    return true;
-                } else {
-                    System.out.println("No matches found");
-                    return false;
                 }
             }
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
-        return false;
     }
 
 //    public static void deleteContact(String name) {
