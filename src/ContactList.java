@@ -3,9 +3,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ContactList {
 
@@ -54,16 +56,16 @@ public class ContactList {
     }
 
 
-
-
     public static String searchContacts(String name) {
         Path contactsFilePath = Paths.get("src/contacts.txt");
         try {
             List<String> contactsList = Files.readAllLines(contactsFilePath);
-            for (int i = 0; i < contactsList.size(); i ++) {
-                if (contactsList.contains(name)) {
-                    System.out.println(contactsList.get(i));
-                    return contactsList.get(i);
+            for (String contact : contactsList) {
+                if (contact.contains(name)) {
+                    System.out.println(contact);
+                    return contact;
+                } else {
+                    System.out.println("No matches found");
                 }
             }
         } catch (IOException ioe){
@@ -73,8 +75,4 @@ public class ContactList {
     }
 
 
-//    public static List<String> deleteContact(String name, String number) {
-//        Path contactsFilePath = Paths.get("src/contacts.txt");
-//
-//    }
 }
