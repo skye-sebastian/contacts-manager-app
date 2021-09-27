@@ -3,11 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.*;
 
 public class ContactList {
 
@@ -56,23 +52,43 @@ public class ContactList {
     }
 
 
-    public static String searchContacts(String name) {
+    public static boolean searchContacts(String name) {
         Path contactsFilePath = Paths.get("src/contacts.txt");
         try {
             List<String> contactsList = Files.readAllLines(contactsFilePath);
             for (String contact : contactsList) {
                 if (contact.contains(name)) {
                     System.out.println(contact);
-                    return contact;
+                    return true;
                 } else {
                     System.out.println("No matches found");
+                    return false;
                 }
             }
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
-        return "";
+        return false;
     }
 
+    public static void deleteContact(String name) {
+        Path contactsFilePath = Paths.get("src/contacts.txt");
+//        if (searchContacts(name)) {
+        try {
+            List<String> contactsList = Files.readAllLines(contactsFilePath);
+            for (String contact : contactsList) {
+                if (contact.contains(name)) {
+                    System.out.println("Deleting " + name + "\n");
+                    contactsList.remove(contact);
+                    break;
+                } else {
+                    System.out.println("No matches found");
+                }
+            }
+        } catch (IOException | ConcurrentModificationException exc){
+            exc.printStackTrace();
+        }
+
+    }
 
 }

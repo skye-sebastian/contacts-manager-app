@@ -1,10 +1,3 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import static java.nio.file.Files.readAllLines;
-
 public class AppTest {
 
     public static void main(String[] args) {
@@ -21,12 +14,10 @@ public class AppTest {
 //        contactList.addContact(newContact);
 //        contactList.viewContacts();
 
-        System.out.println("Searching contacts");
-        ContactList.searchContacts("Test");
+//        System.out.println("Searching contacts");
+//        ContactList.searchContacts("Test");
 
-
-
-
+        contactList.deleteContact("Test");
 
     }
 
